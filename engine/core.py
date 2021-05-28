@@ -96,7 +96,7 @@ def download_raw_file(url, filename, verbosity):
   try:
 
     # Open the request
-    source = requests.get( url, stream=True).raw
+    source = requests.get( url, stream=True, verify=False).raw
 
     # Write the file
     with open( filename, 'wb+' ) as ddl_file:
@@ -124,7 +124,7 @@ def download_file(url, filename, verbosity):
   try:
 
     # Open the request
-    source = requests.get( url).text
+    source = requests.get( url, verify=False).text
 
     # Write the file
     with open( filename, 'wb' ) as ddl_file:
